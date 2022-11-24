@@ -1,7 +1,5 @@
 # XTool
 
-
-
 ## install
 
 ```
@@ -22,7 +20,8 @@ output
 {"items":[{"title":"CST: 2360-03-01 01:30:22","subtitle":"","arg":""},{"title":"IST: 2360-02-29 23:00:22","subtitle":"","arg":""}]}
 ```
 
-结合Alfred
+## 结合Alfred ##
+
 <img width="480" src="./source/img/Alfred.png"/>
 <img width="480" src="./source/img/Alfred2.png"/>
 
