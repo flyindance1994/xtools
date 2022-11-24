@@ -23,7 +23,7 @@ output
 ```
 
 结合Alfred
-<img width="380" src="./source/img/Alfred.png"/>
+<img width="480" src="./source/img/Alfred.png"/>
 <img width="480" src="./source/img/Alfred2.png"/>
 
 ```
