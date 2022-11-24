@@ -1,6 +1,6 @@
 {
   "name": "@mrship/xtools",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,11 @@
     "commander": "^9.4.1",
     "moment": "^2.29.4"
   },
-  "bin": {   
+  "bin": {
     "xtools": "./index.js"
- }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flyindance1994/xtools.git"
+  }
 }
