@@ -22,8 +22,8 @@ output
 
 ## 结合Alfred ##
 
-![Alfred]("https://github.com/flyindance1994/xtools/raw/master/source/img/Alfred.png")
-![Alfred]("https://github.com/flyindance1994/xtools/raw/master/source/img/Alfred2.png")
+![Alfred]("https://raw.githubusercontent.com/flyindance1994/xtools/master/source/img/Alfred.png")
+![Alfred]("https://raw.githubusercontent.com/flyindance1994/xtools/master/source/img/Alfred2.png")
 
 ```
 node /Your_npm_global_path/.npm-packages/bin/xtools -t "{query}"
