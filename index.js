@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const { program } = require('commander')
-const moment = require('moment')
 const { md5File, md5CompareByDir } = require('./utils');
+const moment = require('moment-timezone');
 
 program.version('0.0.1')
 
@@ -16,24 +16,29 @@ let options = program.opts()
 
 //时间戳转中国、印度时区
 if (options.timestamp) {
-    let cstTimestamp = options.timestamp;
-    let istTimestamp = cstTimestamp - 60 * 60 * 2.5
+    let timestamp = options.timestamp * 1000; 
+
     let result_array = []
+    let timezoneList = ["Asia/Shanghai", "Asia/Kolkata"];
+    const format = "zz YYYY-MM-DD HH:mm:ss"
 
-    
-    result_array.push({
-        title: 'CST: ' + moment.unix(cstTimestamp).format('YYYY-MM-DD HH:mm:ss'),
-        subtitle: cstTimestamp,
-        arg: ''
-    }, {
-        title: 'IST: ' + moment.unix(istTimestamp).format('YYYY-MM-DD HH:mm:ss'),
-        subtitle: istTimestamp,
-        arg: ''
-    })
+    // console.log(moment.tz.names())
 
-    console.log(JSON.stringify({
-        items: result_array
-    }))
+    console.log(moment(timestamp).tz("Asia/Shanghai").format(format))
+    console.log(moment(timestamp).tz("Asia/Kolkata").format(format))
+    // result_array.push({
+    //     title: moment.unix(cstTimestamp).format('YYYY-MM-DD HH:mm:ss') + " CST",
+    //     subtitle: cstTimestamp,
+    //     arg: ''
+    // }, {
+    //     title: moment.unix(istTimestamp).format('YYYY-MM-DD HH:mm:ss') + " IST",
+    //     subtitle: istTimestamp,
+    //     arg: ''
+    // })
+
+    // console.log(JSON.stringify({
+    //     items: result_array
+    // }))
 }
 
 //生成多个文件md5值
