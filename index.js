@@ -16,29 +16,41 @@ let options = program.opts()
 
 //时间戳转中国、印度时区
 if (options.timestamp) {
-    let timestamp = options.timestamp * 1000; 
-
     let result_array = []
-    let timezoneList = ["Asia/Shanghai", "Asia/Kolkata"];
-    const format = "zz YYYY-MM-DD HH:mm:ss"
+    //关注的时区
+    let timezoneList = ["Asia/Shanghai", "Asia/Kolkata", "America/New_York"];
 
-    // console.log(moment.tz.names())
+    let timestampRegExp = /^[0-9]*$/
+    let dateRegExp = /\d+-\d+-\d+/g
+    let datetimeRegExp = /\d+-\d+-\d+ \d+:\d+:\d+/g
 
-    console.log(moment(timestamp).tz("Asia/Shanghai").format(format))
-    console.log(moment(timestamp).tz("Asia/Kolkata").format(format))
-    // result_array.push({
-    //     title: moment.unix(cstTimestamp).format('YYYY-MM-DD HH:mm:ss') + " CST",
-    //     subtitle: cstTimestamp,
-    //     arg: ''
-    // }, {
-    //     title: moment.unix(istTimestamp).format('YYYY-MM-DD HH:mm:ss') + " IST",
-    //     subtitle: istTimestamp,
-    //     arg: ''
-    // })
+    //如果是时间戳
+    if (timestampRegExp.test(options.timestamp)) {
+        let timestamp = options.timestamp * 1000; 
+        const format = "zz YYYY-MM-DD HH:mm:ss"
 
-    // console.log(JSON.stringify({
-    //     items: result_array
-    // }))
+        timezoneList.forEach(item => {
+             result_array.push({
+                title: moment(timestamp).tz(item).format(format),
+                subtitle: item,
+                arg: moment(timestamp).tz(item).format(format)
+             })
+        })
+    }
+
+    if(dateRegExp.test(options.timestamp) || datetimeRegExp.test(options.timestamp)) {
+        timezoneList.forEach(item => {
+            result_array.push({
+               title: 'UNIX Timestamp:' + moment.tz(options.timestamp, item).unix(),
+               subtitle: item,
+               arg: moment.tz(options.timestamp, item).unix()
+            })
+       })
+    }
+
+    console.log(JSON.stringify({
+        items: result_array
+    }))
 }
 
 //生成多个文件md5值
