@@ -19,5 +19,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/flyindance1994/xtools.git"
+  },
+  "np": {
+    "yarn": false,
+    "anyBranch": true,
+    "cleanup": false,
+    "yolo": true
   }
 }
