@@ -43,7 +43,7 @@ if (options.timestamp) {
         timezoneList.forEach(item => {
             result_array.push({
                title: moment.tz(options.timestamp, item).unix(),
-               subtitle: item + 'UNIX Timestamp',
+               subtitle: item + ' UNIX Timestamp',
                arg: moment.tz(options.timestamp, item).unix()
             })
        })
