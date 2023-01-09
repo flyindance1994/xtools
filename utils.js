@@ -102,4 +102,19 @@ const md5CompareByDir = (compareMd5) => {
   }
 }
 
-module.exports = { walkFile, md5File, md5CompareByDir }
+//base64, url
+const encodeFunc = (str) => {
+  let base64Encoded = new Buffer.from(str).toString('base64')
+  let urlEncoded = encodeURIComponent(str)
+
+  return {base64Encoded:base64Encoded,urlEncoded:urlEncoded}
+}
+
+const decodeFunc = (str) => {
+  let base64Decoded = new Buffer.from(str, 'base64').toString('utf8')
+  let urlDecoded = decodeURIComponent(str)
+
+  return {base64Decoded:base64Decoded,urlDecoded:urlDecoded}
+}
+
+module.exports = { walkFile, md5File, md5CompareByDir, encodeFunc, decodeFunc}
