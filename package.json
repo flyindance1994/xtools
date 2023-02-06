@@ -24,6 +24,7 @@
     "yarn": false,
     "anyBranch": true,
     "cleanup": false,
-    "yolo": true
+    "yolo": true,
+    "tests": false
   }
 }
